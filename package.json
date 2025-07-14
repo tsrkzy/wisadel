@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "fmt": "biome check --write ./"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@biomejs/biome": "2.1.1"
+  }
+}
