@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>home</h1>
+    <h1 class="text-3xl font-bold underline">home</h1>
     <p>Welcome to the home page!</p>
     <form @submit="onSubmit">
-      <input name="email" v-model="email" type="email"/>
+      <input name="email" v-model="email" type="email" />
       <span>{{ errors.email }}</span>
-      <input name="password" v-model="password" type="password"/>
+      <input name="password" v-model="password" type="password" />
       <span>{{ errors.password }}</span>
-      <button>sign up for newsletter</button>
+      <Button>Subscribe Newsletter</Button>
     </form>
   </div>
 </template>
@@ -17,12 +17,13 @@ import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
 import { useField, useForm } from "vee-validate";
 import { zEmail, zPassword } from "@/schema/auth.ts";
+import { Button } from "@/components/ui/button";
 
 const validationSchema = toTypedSchema(
-    z.object({
-      email: zEmail,
-      password: zPassword,
-    }),
+  z.object({
+    email: zEmail,
+    password: zPassword,
+  }),
 );
 
 const { handleSubmit, errors } = useForm({
