@@ -16,23 +16,27 @@
 import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
 import { useField, useForm } from "vee-validate";
+import { zEmail, zPassword } from "@/schema/auth.ts";
 
 const validationSchema = toTypedSchema(
     z.object({
-      email: z.email({ message: 'Must be a valid email' }).min(1, { message: 'This is required' }),
-      password: z.string().min(1, { message: 'This is required' }).min(8, { message: 'Too short' }),
-    })
+      email: zEmail,
+      password: zPassword,
+    }),
 );
 
 const { handleSubmit, errors } = useForm({
   validationSchema,
+  initialValues: {
+    email: "",
+    password: "",
+  },
 });
 
 const { value: email } = useField("email");
 const { value: password } = useField("password");
 
-const onSubmit = handleSubmit(values => {
+const onSubmit = handleSubmit((values) => {
   console.log("Form submitted with values:", values);
-})
-
+});
 </script>
