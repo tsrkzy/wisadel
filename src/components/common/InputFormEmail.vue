@@ -9,5 +9,5 @@ const m = defineModel();
 </script>
 
 <template>
-  <input name="{{name}}" v-model="m" type="email" />
+  <input :name="name" v-model="m" type="email" />
 </template>

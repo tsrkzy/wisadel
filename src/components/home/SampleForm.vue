@@ -1,18 +1,17 @@
 <script setup lang="ts">
-
 import InputErrorMessage from "@/components/common/InputErrorMessage.vue";
 import InputFormEmail from "@/components/common/InputFormEmail.vue";
 import { Button } from "@/components/ui/button";
-import { toTypedSchema } from "@vee-validate/zod";
-import * as z from "zod";
 import { zEmail, zPassword } from "@/schema/auth.ts";
+import { toTypedSchema } from "@vee-validate/zod";
 import { useField, useForm } from "vee-validate";
+import * as z from "zod";
 
 const validationSchema = toTypedSchema(
-    z.object({
-      email: zEmail,
-      password: zPassword,
-    }),
+  z.object({
+    email: zEmail,
+    password: zPassword,
+  }),
 );
 
 const { handleSubmit, errors } = useForm({
@@ -34,9 +33,9 @@ const onSubmit = handleSubmit((values) => {
 <template>
   <form @submit="onSubmit">
     <InputFormEmail name="email" v-model="email" />
-    <InputErrorMessage>{{ errors.email }}</InputErrorMessage>
+    <InputErrorMessage :message="errors.email" />
     <InputFormEmail name="password" v-model="password" />
-    <InputErrorMessage>{{ errors.password }}</InputErrorMessage>
+    <InputErrorMessage :message="errors.password" />
     <Button>Subscribe Newsletter</Button>
   </form>
 </template>

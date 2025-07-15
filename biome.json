@@ -10,7 +10,7 @@
     "includes": ["./src/**/*", "./*.{js,ts,vue,json,md}"]
   },
   "formatter": {
-    "enabled": false,
+    "enabled": true,
     "indentStyle": "space"
   },
   "linter": {

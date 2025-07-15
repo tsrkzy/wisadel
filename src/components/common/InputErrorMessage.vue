@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const { message = "" } = defineProps({
+  message: {
+    type: String,
+  },
+});
+</script>
+
 <template>
-  <span> <slot></slot> </span>
+  <span v-if="message">{{ message }}</span>
 </template>
